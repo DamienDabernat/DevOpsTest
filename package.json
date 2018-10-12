@@ -16,6 +16,7 @@
     "prettier": "prettier --write app/*.js app/__{tests,mocks}__/*.js e2e_tests/*.js"
   },
   "dependencies": {
+    "connect-datadog": "0.0.6",
     "ejs": "~2.5.7",
     "express": "~4.16.2",
     "gemfile": "^1.1.0",
@@ -30,6 +31,7 @@
     "jest": "^21.2.1",
     "nodemon": "^1.12.5",
     "prettier": "^1.9.1",
+    "node-dogstatsd": "0.0.7",
     "supertest": "~3.0.0"
   },
   "repository": {

@@ -19,14 +19,12 @@ function route(app) {
 
     // if no input params are passed in then render the view with out querying the api
     if (!tags && !tagmode) {
-      dogstatsd.increment('page.views')
       return res.render('index', ejsLocalVariables);
     }
 
     // validate query parameters
     if (!formValidator.hasValidFlickrAPIParams(tags, tagmode)) {
       ejsLocalVariables.invalidParameters = true;
-      dogstatsd.increment('page.views')
       return res.render('index', ejsLocalVariables);
     }
 

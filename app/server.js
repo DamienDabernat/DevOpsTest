@@ -4,6 +4,10 @@ const path = require('path');
 
 const app = express();
 
+// Datadog middleware for Connect JS / Express
+app.use(require("connect-datadog")({}));
+
+
 // public assets
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
