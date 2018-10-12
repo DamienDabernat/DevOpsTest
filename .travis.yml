@@ -7,5 +7,5 @@ deploy:
   api_key:
     secure: "a97e9c63-6a62-4ce7-8b11-cf835d1a2a92"
   app:
-    develop: devopstest-develop
+    develop: devopstest-staging
     master: devopstest-staging
