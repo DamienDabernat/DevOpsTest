@@ -1,6 +1,3 @@
-var StatsD = require('node-dogstatsd').StatsD;
-var dogstatsd = new StatsD();
-
 const formValidator = require('./form_validator');
 const photoModel = require('./photo_model');
 
