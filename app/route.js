@@ -1,3 +1,6 @@
+var StatsD = require('hot-shots'),
+      client = new StatsD();
+
 const formValidator = require('./form_validator');
 const photoModel = require('./photo_model');
 
@@ -16,12 +19,14 @@ function route(app) {
 
     // if no input params are passed in then render the view with out querying the api
     if (!tags && !tagmode) {
+      client.increment('request');
       return res.render('index', ejsLocalVariables);
     }
 
     // validate query parameters
     if (!formValidator.hasValidFlickrAPIParams(tags, tagmode)) {
       ejsLocalVariables.invalidParameters = true;
+      client.increment('request');
       return res.render('index', ejsLocalVariables);
     }
 
