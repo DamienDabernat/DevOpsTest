@@ -4,6 +4,15 @@ const path = require('path');
 
 const app = express();
 
+const DD = require('node-dogstatsd').StatsD;
+const ddagent = new DD('localhost');
+const DDMiddleware = require('connect-datadog');
+
+// Datadog middleware for Connect JS / Express
+app.use(DDMiddleware({dogstatsd: ddagent}));
+
+//testfffff
+
 // public assets
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
@@ -16,6 +25,8 @@ app.set('view engine', 'html');
 
 // load route
 require('./route')(app);
+
+
 
 // server
 const port = process.env.PORT || 3000;
