@@ -4,8 +4,12 @@ const path = require('path');
 
 const app = express();
 
+const DD = require('node-dogstatsd').StatsD;
+const ddagent = new DD('localhost');
+const DDMiddleware = require('connect-datadog');
+
 // Datadog middleware for Connect JS / Express
-app.use(require("connect-datadog")({}));
+app.use(DDMiddleware({dogstatsd: ddagent}));
 
 
 // public assets
